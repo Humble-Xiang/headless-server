@@ -15,7 +15,10 @@
     "test:ci": "jest --ci"
   },
   "dependencies": {
+    "chrome-aws-lambda": "~6.0.0",
     "next": "12.2.5",
+    "p-wait-for": "^5.0.0",
+    "puppeteer-core": "^13.5.1",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
