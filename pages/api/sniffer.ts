@@ -19,11 +19,11 @@ const sniffer = async (req: NextApiRequest, res: NextApiResponse) => {
       interceptedRequest.continue();
     });
     await page.setRequestInterception(true);
-    await page.goto(req.query.url as string);
+    page.goto(req.query.url as string).catch(() => null);
     await pWaitFor(() => list.length > 0, { timeout: 10000 });
-    await page.close();
     res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate');
     res.status(200).json(list);
+    await page.close();
   } catch (e) {
     if (!page.isClosed()) {
       await page.close();

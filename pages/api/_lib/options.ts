@@ -16,13 +16,13 @@ export async function getOptions(isDev: boolean) {
   let options: Options;
   if (isDev) {
     options = {
-      args: [],
+      args: ['--disable-site-isolation-trials'],
       executablePath: exePath,
-      headless: false,
+      headless: true,
     };
   } else {
     options = {
-      args: chrome.args,
+      args: [...chrome.args, '--disable-site-isolation-trials'],
       executablePath: await chrome.executablePath,
       headless: chrome.headless,
     };
